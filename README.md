@@ -1,5 +1,7 @@
 # cowin-script
 
+Main Cowin APIs and schemas: https://apisetu.gov.in/public/marketplace/api/cowin
+
 The script contains only the scanner. To notify you need to use a 3rd application interface or API.
 I used a 3rd party cloud server or your cloud server which pushes notification to specific devices.
 Example: I used https://github.com/mashlol/notify for android.
