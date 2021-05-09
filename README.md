@@ -9,6 +9,8 @@ Example: If you would like to scan for specifix pin codes, then just enter it in
 
 
 The below line is used to call a second script which contains code for whom to notify, and various other filters.
+
+
 `source ./notify.sh "$pincode:$Search2" $vaccine $available_cnt $min_age_limit &`
 
 
