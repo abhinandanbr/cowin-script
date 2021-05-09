@@ -22,6 +22,7 @@ vaccine_search=$1
 vaccine_pin='560003 560008 560011 560038 560060 560061 560070 560076 560078 560085 560091';
 pin_search=$2
 
+#Get todays date
 today_date=$(date +%d-%m-%Y)
 tsss=(date)
 
