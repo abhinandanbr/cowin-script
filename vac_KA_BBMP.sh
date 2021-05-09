@@ -3,11 +3,22 @@
 while true; do
 
 filename="KA.json"
+
+#Enable test to test out the script. Disable for deploying real time
 test="0"
+
 session_id_done="0"
 session_id="0"
+center_cnt="0"
+session_cnt="0"
+vaccine="0"
+available_cnt="0"
+pincode="0"
+min_age_limit="0"
 
 vaccine_search=$1
+
+# Pin code for filtering list of data
 vaccine_pin='560003 560008 560011 560038 560060 560061 560070 560076 560078 560085 560091';
 pin_search=$2
 
@@ -29,14 +40,6 @@ curl -X GET "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calend
 -H "If-None-Match: W/"8a0-cJo3"+$tsss" \
 --compressed > $filename 
 
-center_cnt="0"
-
-session_cnt="0"
-vaccine="0"
-
-available_cnt="0"
-pincode="0"
-min_age_limit="0"
 
 
 #Get Number of centers
@@ -108,7 +111,7 @@ i=$[$i+1]
 
 done
 
- sleep 10 #that would mean running the actual script every 2s
+ sleep 10 #that would mean running the actual script every 10s
 done
 
 
