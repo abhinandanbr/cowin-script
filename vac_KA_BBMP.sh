@@ -17,6 +17,8 @@ tsss=(date)
 rm $filename
 touch $filename
 
+
+#Main HTTP GET response call
 curl -X GET "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=294&date=$today_date?ts=$tsss" \
 -H "accept: application/json" \
 -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"' \
@@ -37,7 +39,7 @@ pincode="0"
 min_age_limit="0"
 
 
-
+#Get Number of centers
 center_cnt=$(jq .centers $filename | jq length)
 
 
@@ -55,14 +57,14 @@ echo -e
 while [ $i -lt $center_cnt ]
 
 do
-
+#Get Number of sessions in each center
 session_cnt=$(jq .centers[$i].sessions $filename | jq length)
 
 #echo -e "Sessions: $session_cnt"
 
 j="0"
 
-# loop for sessions
+# loop through sessions
 
 while [ $j -lt $session_cnt ]
 
@@ -84,12 +86,13 @@ else
 Search2="Search $vaccine"
 fi
 
+#Find matching pin codes where slot is available
 if [[ $vaccine_pin =~ "$pincode" ]]; then
 if [ "$available_cnt" -gt "0" ]; then
 
-#NOTIFY
+#Notify user
 echo -e "$min_age_limit Count: $available_cnt; $vaccine; $pincode"
-source /home/deeksha/./notify.sh "$pincode:$Search2" $vaccine $available_cnt $min_age_limit &
+source ./notify.sh "$pincode:$Search2" $vaccine $available_cnt $min_age_limit &
 
 session_id_done+="$session_id"
 
@@ -109,8 +112,3 @@ done
 done
 
 
-
-notify()
-{
-source "/home/deeksha/./notify.sh "$pincode:$Search2" $vaccine $available_cnt $min_age_limit"
-}
