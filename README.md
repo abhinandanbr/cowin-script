@@ -1,4 +1,4 @@
-# COwin Script
+# Cowin Script
 
 Main Cowin APIs and schemas: https://apisetu.gov.in/public/marketplace/api/cowin
 
